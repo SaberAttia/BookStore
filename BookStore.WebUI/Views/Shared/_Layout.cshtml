@@ -1,0 +1,43 @@
+﻿<!DOCTYPE html> @*14*@
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title</title>
+    <link href="~/Content/bootstrap.css" rel="stylesheet"/> @*80*@
+    <link href="~/Content/bootstrap-theme.css" rel="stylesheet" />
+    <link href="~/Content/ErrorStyle.css" rel="stylesheet" /> @*152*@
+    @*154*@
+    <style>
+        .navbar-right {   
+            float:right !important;
+            margin-right:15px; margin-left:15px;
+        }
+    </style>
+</head>
+<body>
+    <div class="navbar navbar-inverse" role="navigation"> @*81,153*@
+        <a class="navbar-brand" href="#">
+        <span class="hidden-xs">Book Store</span> 
+            <div class="visible-xs">Book</div>
+            <div class="visible-xs">Store</div>
+        </a>
+    @Html.Action("Summary", "Cart") @*134*@
+    </div>
+    <div class="visible-xs"> @*157*@
+        @Html.Action("Menu", "Nav" , new { mobileLayout = true})
+    </div>
+
+    <div class="row panel"> @*82*@
+        <div id="specialization" class="col-xs-3 hidden-xs">
+            @*put something useful here later //92*@
+            @Html.Action("Menu","Nav")
+        </div>
+        <div class="col-xs-12 col-sm-8">
+            @RenderBody()  @*83*@
+        </div>
+    </div>
+    
+        
+</body>
+</html>

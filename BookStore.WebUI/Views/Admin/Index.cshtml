@@ -1,0 +1,69 @@
+﻿@model IEnumerable<BookStore.Domain.Entities.Book>
+
+@{
+    ViewBag.Title = "Admin: All Books";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h2>Book Index</h2>
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3>All Books</h3>
+    </div>
+    <div class="panel-body">
+
+        <table class="table table-condensed table-striped table-bordered">
+            <tr>
+                <th class="text-right">
+                    ID
+                </th>
+                <th>
+                    Title
+                </th>
+                @*<th>
+                    Description
+                </th>*@
+                <th class="text-right">
+                    Price
+                </th>
+                <th>
+                    Category
+                </th>
+                <th>Actions</th>
+            </tr>
+
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td class="text-right">
+                        @Html.DisplayFor(modelItem => item.ISBN)
+                    </td>
+                    <td>
+                        @Html.ActionLink(item.Title, "Edit", new { item.ISBN})
+                    </td>
+                    @*<td>
+                        @Html.DisplayFor(modelItem => item.Description)
+                    </td>*@
+                    <td class="text-right">
+                        @item.Price.ToString("c")
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Specialization)
+                    </td>
+                    <td class="text-center">
+                        @Html.ActionLink("Delete", "Delete", new { item.ISBN }, new { @class="btn btn-danger btn-xs"})
+                    </td>
+                </tr>
+            }
+
+        </table>
+    </div>
+    <div class="panel-footer">
+        <p>
+            @Html.ActionLink("Add New Book", "Create", null, new { @class="btn btn-default"})
+        </p>
+    </div>
+</div>
+    
+  
+

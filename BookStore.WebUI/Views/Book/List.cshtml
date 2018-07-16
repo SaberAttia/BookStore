@@ -1,0 +1,33 @@
+﻿@*@*13-Add IEnumerable to model*@
+@*@using BookStore.Domain.Entities*@
+@*@model IEnumerable<Book>*@
+@model BookStore.WebUI.Models.BookListViewModel
+@*@using BookStore.WebUI.HTMLHelper @*//79*@
+
+
+
+@{
+    ViewBag.Title = "List";
+}
+
+<h2>Book List</h2> @*15*@
+@*@Model.Count(); @*26*@
+@*74*@
+@foreach (var b in Model.Books)
+{
+    @*<div>
+                @*<h3>@b.Title</h3>
+                @b.Description
+                <h4>@b.Price.ToString("c")</h4>
+                <h3><strong> @b.Title </strong>
+                <span class="pull-right label label-primary">@b.Price.ToString("c")</span>
+                </h3>
+                <span class="lead">@b.Description</span>
+        </div>*@
+    @Html.Partial("BookSummary", b);
+}
+
+@*76*@
+<div class="btn-group pull-right">
+    @Html.PageLinks(Model.pagingInfo, x => Url.Action("List", "Book", new { pageno = x, specialization = Model.CurrentSpecialization })) @*90*@
+</div>
